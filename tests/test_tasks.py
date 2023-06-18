@@ -1,9 +1,6 @@
 from prefect import flow
 
-from prefect_sns.tasks import (
-    goodbye_prefect_sns,
-    hello_prefect_sns,
-)
+from prefect_sns.tasks import goodbye_prefect_sns, hello_prefect_sns
 
 
 def test_hello_prefect_sns():
