@@ -1,9 +1,9 @@
-"""This is an example blocks module"""
-
+"""SNS Block Module"""
 from typing import Optional
 
 import boto3
 from prefect.blocks.core import Block
+from pydantic import Field
 
 
 class SnsBlock(Block):
@@ -30,9 +30,15 @@ class SnsBlock(Block):
     )
 
     sns_arn: str
-    aws_region: str = "us-east-1"
-    aws_access_key_id: Optional[str] = None
-    aws_secret_access_key: Optional[str] = None
+    aws_region: str = Field(
+        default="us-east-1", title="The AWS Region that the SNS topic is in."
+    )
+    aws_access_key_id: Optional[str] = Field(
+        default=None, title="The AWS Access Key ID"
+    )
+    aws_secret_access_key: Optional[str] = Field(
+        default=None, title="The AWS Access Secret ID"
+    )
 
     @classmethod
     def publish(self, subject: str, message: str):
