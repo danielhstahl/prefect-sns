@@ -24,7 +24,7 @@ class SnsBlock(Block):
 
     _block_type_name = "sns"
     # replace this with a relevant logo; defaults to Prefect logo
-    _logo_url = "https://images.ctfassets.net/gm98wzqotmnx/08yCE6xpJMX9Kjl5VArDS/c2ede674c20f90b9b6edeab71feffac9/prefect-200x200.png?h=250"  # noqa
+    _logo_url = "https://raw.githubusercontent.com/danielhstahl/prefect-sns/main/docs/img/aws-sns-simple-notification-service.svg"  # noqa
     _documentation_url = (
         "https://danielhstahl.github.io/prefect-sns/blocks_catalog/"  # noqa
     )
