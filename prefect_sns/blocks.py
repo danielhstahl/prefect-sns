@@ -1,12 +1,14 @@
 """This is an example blocks module"""
 
+from typing import Optional
+
+import boto3
 from prefect.blocks.core import Block
-from pydantic import Field
 
 
 class SnsBlock(Block):
     """
-    A sample block that holds a value.
+    A block that facilitates interaction with AWS SNS.
 
     Attributes:
         value (str): The value to store.
@@ -16,6 +18,7 @@ class SnsBlock(Block):
         ```python
         from prefect_sns import SnsBlock
         block = SnsBlock.load("BLOCK_NAME")
+        block.publish("my subject", "my message")
         ```
     """
 
@@ -24,12 +27,32 @@ class SnsBlock(Block):
     _logo_url = "https://images.ctfassets.net/gm98wzqotmnx/08yCE6xpJMX9Kjl5VArDS/c2ede674c20f90b9b6edeab71feffac9/prefect-200x200.png?h=250"  # noqa
     _documentation_url = "https://danielhstahl.github.io/prefect-sns/blocks/#prefect-sns.blocks.SnsBlock"  # noqa
 
-    value: str = Field("The default value", description="The value to store.")
+    sns_arn: str
+    aws_region: str = "us-east-1"
+    aws_access_key_id: Optional[str] = None
+    aws_secret_access_key: Optional[str] = None
+
+    @classmethod
+    def publish(self, subject: str, message: str):
+        """
+        Publishes message to SNS topic
+        """
+        sns_client = boto3.client(
+            "sns",
+            region_name=self.aws_region,
+            aws_access_key_id=self.aws_access_key_id,
+            aws_secret_access_key=self.aws_secret_access_key,
+        )
+        sns_client.publish(
+            TopicArn=self.sns_arn,
+            Message=message,
+            Subject=subject,
+        )
 
     @classmethod
     def seed_value_for_example(cls):
         """
         Seeds the field, value, so the block can be loaded.
         """
-        block = cls(value="A sample value")
+        block = cls(sns_arn="A sample value")
         block.save("sample-block", overwrite=True)
