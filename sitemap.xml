@@ -2,27 +2,27 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://danielhstahl.github.io/prefect-sns/</loc>
-         <lastmod>2023-06-18</lastmod>
+         <lastmod>2023-06-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://danielhstahl.github.io/prefect-sns/blocks_catalog/</loc>
-         <lastmod>2023-06-18</lastmod>
+         <lastmod>2023-06-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://danielhstahl.github.io/prefect-sns/examples_catalog/</loc>
-         <lastmod>2023-06-18</lastmod>
+         <lastmod>2023-06-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://danielhstahl.github.io/prefect-sns/flows/</loc>
-         <lastmod>2023-06-18</lastmod>
+         <lastmod>2023-06-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://danielhstahl.github.io/prefect-sns/tasks/</loc>
-         <lastmod>2023-06-18</lastmod>
+         <lastmod>2023-06-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
 </urlset>
