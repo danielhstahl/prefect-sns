@@ -40,19 +40,18 @@ class SnsBlock(Block):
         default=None, title="The AWS Access Secret ID"
     )
 
-    @classmethod
-    def publish(cls, subject: str, message: str):
+    def publish(self, subject: str, message: str):
         """
         Publishes message to SNS topic
         """
         sns_client = boto3.client(
             "sns",
-            region_name=cls.aws_region,
-            aws_access_key_id=cls.aws_access_key_id,
-            aws_secret_access_key=cls.aws_secret_access_key,
+            region_name=self.aws_region,
+            aws_access_key_id=self.aws_access_key_id,
+            aws_secret_access_key=self.aws_secret_access_key,
         )
         sns_client.publish(
-            TopicArn=cls.sns_arn,
+            TopicArn=self.sns_arn,
             Message=message,
             Subject=subject,
         )
